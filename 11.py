@@ -26,7 +26,16 @@ class Category:
         return False
     
     def __str__(self):
-        print()
+        title = self.name.center(30, "*") + "\n"
+        for item in self.ledger:
+            desc = item['description'][:23].ljust(23)
+            amt = f'{item['amount']:.2f}'.rjust(7)
+            line += f'{desc}{amt}\n'
+        
+        total = f'Total: {self.get_balance():.2f}'
+        
+        return title + line + total
+
 
 def create_spend_chart(categories):
     pass
