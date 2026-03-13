@@ -10,7 +10,7 @@ class Category:
         self.ledger = []
     
     #最初的资金（存入的钱）
-    def deposit(self, amount, description):
+    def deposit(self, amount, description = ''):
         self.ledger.append({'amount': amount, 'description': description})
 
     #计算还剩多少钱
@@ -22,26 +22,27 @@ class Category:
         return amount <= self.get_balance()
 
     #花费金额添加
-    def withdraw(self, amount, description):
+    def withdraw(self, amount, description = ""):
         if self.check_funds(amount):
             self.ledger.append({'amount': -amount, 'description': description})
             return True
         return False
     
     #转账
-    def transfer(self, amount, name):
+    def transfer(self, amount, destination):
         if self.check_funds(amount):
-            self.withdraw(amount, f'Transfer to {name}')
-            name.deposit(self.amount, f'Transfer from {self.name}')
+            self.withdraw(amount, f'Transfer to {destination.name}')
+            destination.deposit(self.amount, f'Transfer from {self.name}')
             return True
         return False
     
     #打印函数
     def __str__(self):
         title = self.name.center(30, "*") + "\n"
+        line = ''
         for item in self.ledger:
             desc = item['description'][:23].ljust(23)
-            amt = f'{item['amount']:.2f}'.rjust(7)
+            amt = f"{item['amount']:.2f}".rjust(7)
             line += f'{desc}{amt}\n'
         
         total = f'Total: {self.get_balance():.2f}'
@@ -72,14 +73,14 @@ def create_spend_chart(categories):
     for y in range(100, -1, 10):
         line = f'{y:3d}|'
         for pct in percentages:
-            line += 'o' if pct >= y else ' '
+            line += 'o' if pct >= y else '  '
         #在最后加上两个空格
         line += '  '
     #整合表格
     chart += line + '\n'
 
     #构建水平线
-    horizontal_line = '   ' + '-' * (3 * len(categories) + 2) + '\n'
+    horizontal_line = '    ' + '-' * (3 * len(categories) + 2) + '\n'
     chart += horizontal_line
 
     #显示种类名称
@@ -91,13 +92,14 @@ def create_spend_chart(categories):
         #每个类别按字母逐个打印 无字母则为空格
         for cat in categories:
             char = cat.name[i] if i < len(cat.name) else ' '
-            line += '  '
-            #最后一行无换行符
-            if i == max_name_len:
-                #移除换行符
-                chart += line.rstrip()
-            else:
-                chart += line + '\n'
+            line += f"{char}"
+        line += '  '
+        #最后一行无换行符
+        if i == max_name_len:
+            #移除换行符
+            chart += line.rstrip()
+        else:
+            chart += line + '\n'
 
     #返回表格
     return chart
