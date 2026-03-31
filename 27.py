@@ -48,7 +48,7 @@ def shortest_path(matrix, start_node, target_node=None):
             distance = matrix[current][node_no]
             #只有当距离存在且未被访问时再操作
             if distance != INF and not visited[node_no]:
-                #计算新路径的距离：起点→current → node_no
+                #计算新路径的距离：起点 → current → node_no
                 new_distance = distances[current] + distance
                 #如果新路径比当前记录的距离短更新
                 if new_distance < distances[node_no]:
