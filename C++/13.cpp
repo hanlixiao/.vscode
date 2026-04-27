@@ -1,3 +1,7 @@
+// 练习                        有效的括号
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -12,14 +16,14 @@ public:
 
         for (char c : s)
         {
-
+            // 左括号：压入对应的右括号
             if (map.count(c))
             {
                 st.push(map[c]);
             }
             else
             {
-
+                // 右括号：栈空或不匹配则返回false
                 if (st.empty() || st.top() != c)
                 {
                     return false;
@@ -27,7 +31,7 @@ public:
                 st.pop();
             }
         }
-
+        // 栈必须为空
         return st.empty();
     }
 
