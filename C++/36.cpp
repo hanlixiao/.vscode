@@ -1,3 +1,8 @@
+// 练习                              合并区间
+//                             以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,7 +15,7 @@ public:
         vector<vector<int>> result;
 
         for (const auto& interval : intervals) {
-            // 如果结果为空，或者当前区间的左端点〉结果中最后一个区间的右端点
+            // 如果结果为空，或者当前区间的左端点>结果中最后一个区间的右端点
             // 说明不重叠，直接加入结果
             if (result.empty() || result.back()[1] < interval[0]) {
                 result.push_back(interval);
