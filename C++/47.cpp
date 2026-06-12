@@ -20,13 +20,12 @@ public:
                 swap(nums[curr], nums[p0]);
                 p0++;
                 curr++;
-                } else if (nums[curr] == 2) {
-                    swap(nums[curr], nums[p2]);
-                    p2--;
-                } else {
-                    // nums[curr]== 1
-                    curr++;
-                }
+            } else if (nums[curr] == 2) {
+                swap(nums[curr], nums[p2]);
+                p2--;
+            } else {
+                // nums[curr]== 1
+                curr++;
             }
         }
     }
