@@ -1,3 +1,9 @@
+// 练习                                      计数质数
+//                             给定整数 n ，返回 所有小于非负整数 n 的质数的数量 。
+
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
