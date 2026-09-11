@@ -1,3 +1,9 @@
+// 练习                                          完全二叉树的节点个数
+//                               给你一棵 完全二叉树 的根节点 root ，求出该树的节点个数。
+
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
