@@ -1,3 +1,9 @@
+// 练习                                                   多数元素 II
+//                                          给定一个大小为 n 的整数数组，找出其中所有出现超过 ⌊n / 3⌋ 次的元素。
+
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -6,7 +12,7 @@ public:
     vector<int> majorityElement(vector<int>& nums) {
         int cand1, cand2;
         int cnt1 = 0, cnt2 = 0;
-        // 
+        // 第一轮摩尔投票，选出候选
         for (int x : nums) {
             if (x == cand1) {
                 cnt1++;
@@ -19,11 +25,12 @@ public:
                 cand2 = x;
                 cnt2 = 1;
             } else {
+                // x和两个候选都不一样，抵消一组
                 cnt1--;
                 cnt2--;
             }
         }
-        // 
+        // 第二轮校验候选的真实次数
         cnt1 = 0, cnt2 = 0;
         for (int x : nums) {
             if (x == cand1) cnt1++;
