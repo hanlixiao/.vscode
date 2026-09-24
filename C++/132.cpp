@@ -1,3 +1,10 @@
+// 练习                                     丑数 II
+//                               给你一个整数 n ，请你找出并返回第 n 个 丑数 。
+//                               丑数 就是质因子只包含 2、3 和 5 的正整数。
+
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
