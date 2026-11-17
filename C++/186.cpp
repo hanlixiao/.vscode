@@ -1,3 +1,10 @@
+// 练习                                                             数组中两个数的最大异或值
+//                                                          给你一个整数数组 nums ，返回 nums[i] XOR nums[j] 的最大运算结果，其中 0 ≤ i ≤ j < n 。
+
+
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
